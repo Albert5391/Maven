@@ -11,6 +11,30 @@ public class Persona {
     private int edad;
     private String email;
 
+    public String getApellidos() {
+        return this.apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public int getEdad() {
+        return this.edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     /**
      * Constructor con argumentos
      * @param nombre el nombre de la persona 
@@ -36,6 +60,47 @@ public class Persona {
     public String getNombre () {
 
         return this.nombre;
+
+    }
+
+    public static Persona factoryMethod (String cadena) {
+
+        if (cadena == null) {
+
+            System.err.println("ERROR.");
+
+        }
+
+        String[] partes = cadena.split(",");
+        
+        if (partes.length != 4) {
+
+            return null;
+
+        }
+
+        try {
+
+            String nombre = partes[0];
+            String apellidos = partes[1];
+
+            int edad = Integer.parseInt(partes[2]);
+
+            String email = partes[3];
+
+            return new Persona(partes[0], partes[1], edad, partes[3]);
+
+        }
+
+        catch (Exception e) {
+
+
+
+        }
+
+        return new Persona(partes[0], partes[1], edad, partes[3]);
+
+
 
     }
     
